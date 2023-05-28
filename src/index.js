@@ -6,5 +6,5 @@ function component() {
     return element
 }
 
-document.title = "webpack-typescript-base-setup"
+document.title = "pixijs-webpack-typescript-base-setup"
 document.body.appendChild(component())

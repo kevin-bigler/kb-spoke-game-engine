@@ -1,5 +1,5 @@
 {
-  "name": "webpack-typescript-base-setup",
+  "name": "pixijs-webpack-typescript-base-setup",
   "version": "1.0.0",
   "description": "",
   "main": "dist/src/index.js",
