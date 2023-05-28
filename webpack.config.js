@@ -33,4 +33,7 @@ module.exports = {
         static: './dist',
         hot: true,
     },
+    optimization: {
+        runtimeChunk: 'single',
+    },
 }

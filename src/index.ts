@@ -1,1 +1,1 @@
-console.log("this is the TS file")
+console.log("this is the TS file", new Date())

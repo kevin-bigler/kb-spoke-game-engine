@@ -2,7 +2,7 @@ function component() {
     const element = document.createElement('div')
 
     // Lodash, now imported by this script
-    element.innerHTML = ['yello', 'webpack'].join(' ')
+    element.innerHTML = ['yo', 'webpack'].join(' ')
 
     return element
 }

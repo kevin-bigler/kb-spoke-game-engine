@@ -6,7 +6,8 @@
   "scripts": {
     "build": "webpack",    
     "watch": "webpack --watch",
-    "start": "webpack serve --open"
+    "start": "webpack serve --open",
+    "dev": "webpack server --open --hot"
   },
   "keywords": [],
   "author": "",
