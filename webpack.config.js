@@ -1,5 +1,6 @@
 const path = require("path")
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const CopyPlugin = require('copy-webpack-plugin')
 
 module.exports = {
     /**
@@ -9,6 +10,7 @@ module.exports = {
         index: "./src/index.js",
         print: "./src/print.js",
         tsindex: "./src/index.ts",
+        pixinpmexample: "./src/pixi-npm-example.ts",
     },
     output: {
         filename: "[name].bundle.js",
@@ -17,6 +19,12 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin(),
+        // Copy assets to serve them
+        new CopyPlugin({
+            patterns: [
+                { from: 'assets', to: 'assets' },
+            ],
+        }),
     ],
     module: {
         rules: [
