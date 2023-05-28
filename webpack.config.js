@@ -7,6 +7,7 @@ module.exports = {
     entry: {
         index: "./src/index.js",
         print: "./src/print.js",
+        tsindex: "./src/index.ts",
     },
     output: {
         filename: "[name].bundle.js",
@@ -16,4 +17,16 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin(),
     ],
+    module: {
+        rules: [
+            {
+                test: /\.tsx?$/,
+                use: 'ts-loader',
+                exclude: /node_modules/,
+            },
+        ],
+    },
+    resolve: {
+        extensions: ['.tsx', '.ts', '.js'],
+    },
 }
