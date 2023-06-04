@@ -2,7 +2,7 @@ import { getCircleGraphics } from "./engine/graphicsHelper";
 
 export default class BouncyBall {
     constructor(boundaryWidth, boundaryHeight) {
-        this.vel = [120, 120];
+        this.vel = [60, 12];
         this.pos = [40, 40];
         this.r = 8;
         this.boundaryWidth = boundaryWidth;
@@ -14,7 +14,7 @@ export default class BouncyBall {
         this.pos[0] += this.vel[0] * (dt/1000);
         this.pos[1] += this.vel[1] * (dt/1000);
         // this.pos = wrap(this.pos, this.boundaryWidth, this.boundaryHeight);
-        this.vel = bounce(this.pos, this.vel, this.boundaryWidth, this.boundaryHeight);
+        this.vel = bounce(this.pos, this.vel, this.r * 2, this.r * 2, this.boundaryWidth, this.boundaryHeight);
     }
     draw(parent) {
         this.graphic.x = this.pos[0];
@@ -51,22 +51,24 @@ const wrap = (pos, boundaryWidth, boundaryHeight) => {
  * bouncing strategy for updating pos based on boundaries
  * @param {[x: number, y: number]} pos 
  * @param {[x: number, y: number]} vel 
+ * @param {number} w
+ * @param {number} h
  * @param {*} boundaryWidth 
  * @param {*} boundaryHeight 
  * @returns {[x: number, y: number]} new vel
  */
-const bounce = (pos, vel, boundaryWidth, boundaryHeight) => {
+const bounce = (pos, vel, w, h, boundaryWidth, boundaryHeight) => {
     const vel2 = vel.slice(0);
-    if (pos[0] < 0) {
+    if (pos[0] - w * 0.5 < 0) {
         vel2[0] *= -1;
     }
-    if (pos[0] > boundaryWidth) {
+    if (pos[0] + w * 0.5 > boundaryWidth) {
         vel2[0] *= -1;
     }
-    if (pos[1] < 0) {
+    if (pos[1] - h * 0.5 < 0) {
         vel2[1] *= -1;
     }
-    if (pos[1] > boundaryHeight) {
+    if (pos[1] + h * 0.5 > boundaryHeight) {
         vel2[1] *= -1;
     }
     return vel2;
