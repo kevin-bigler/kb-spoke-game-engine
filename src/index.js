@@ -6,5 +6,5 @@ function component() {
     return element
 }
 
-document.title = "pixijs-webpack-typescript-base-setup"
-document.body.appendChild(component())
+document.title = "kb-spoke-game-engine"
+// document.body.appendChild(component())

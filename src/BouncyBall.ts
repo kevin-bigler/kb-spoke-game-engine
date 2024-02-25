@@ -1,7 +1,15 @@
+import { Container, Graphics } from "pixi.js";
 import { getCircleGraphics } from "./engine/graphicsHelper";
 
 export default class BouncyBall {
-    constructor(boundaryWidth, boundaryHeight) {
+    vel: [x: number, y: number]
+    pos: [x: number, y: number]
+    r: number
+    boundaryWidth: number
+    boundaryHeight: number
+    graphic: Graphics
+
+    constructor(boundaryWidth: number, boundaryHeight: number) {
         this.vel = [60, 12];
         this.pos = [40, 40];
         this.r = 8;
@@ -10,13 +18,13 @@ export default class BouncyBall {
 
         this.graphic = getCircleGraphics(0, 0, this.r, 0xffffff, 0);// 0xaaaaaa, 1);
     }
-    update(dt) {
+    update(dt: number): void {
         this.pos[0] += this.vel[0] * (dt/1000);
         this.pos[1] += this.vel[1] * (dt/1000);
         // this.pos = wrap(this.pos, this.boundaryWidth, this.boundaryHeight);
         this.vel = bounce(this.pos, this.vel, this.r * 2, this.r * 2, this.boundaryWidth, this.boundaryHeight);
     }
-    draw(parent) {
+    draw(parent: Container): void {
         this.graphic.x = this.pos[0];
         this.graphic.y = this.pos[1];
         parent.addChild(this.graphic);

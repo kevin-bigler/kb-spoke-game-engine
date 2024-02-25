@@ -10,6 +10,19 @@ const NOOP = () => {};
 // start/stop ability (?) maybe noLoop() like p5
 // showFps() function
 export class Game {
+    width: number
+    height: number
+    setup: Function
+    update: Function
+    draw: Function
+    framerate: number
+    backgroundColor: PIXI.ColorSource
+    stageElement: Element
+    fpsCounter: FpsCounter
+    looper: Looper
+    renderer: PIXI.IRenderer
+    stage: PIXI.Container
+
     constructor({width, height, setup = NOOP, update, draw, framerate = 60, backgroundColor = undefined, stageElement = document.body}) {
         // const canvasWidth = 640;
         // const canvasHeight = 360;

@@ -5,11 +5,11 @@ export const ELEMENT_NAMES = {
     FPS_DISPLAY: "fps",
 }
 
-const initRenderer = (parent, width, height, backgroundColor) => {
+const initRenderer = (parent, width, height, backgroundColor): PIXI.IRenderer => {
     // const app = new PIXI.Application({width, height, transparent: true}); // 0xff0000});
     const renderer = PIXI.autoDetectRenderer({
         antialias: true,
-        transparent : backgroundColor === undefined,
+        // transparent : backgroundColor === undefined,
         preserveDrawingBuffer: true,
         backgroundColor,
         width,
@@ -20,7 +20,7 @@ const initRenderer = (parent, width, height, backgroundColor) => {
 
     const stageElement = findElement(document.body, ELEMENT_NAMES.STAGE)
     const viewElement = findElement(stageElement, "view")
-    stageElement.replaceChild(renderer.view, stageElement.lastElementChild); // Hack for HMR
+    stageElement.replaceChild(renderer.view as any, stageElement.lastElementChild); // Hack for HMR
 
     return renderer;
 };
@@ -31,7 +31,7 @@ const initRenderer = (parent, width, height, backgroundColor) => {
  * @param {string} id
  * @returns {Element}
  */
-export const findElement = (parent, id) => {
+export const findElement = (parent, id): Element => {
     const el = parent.children.namedItem(id)
     if (!el) {
         const newEl = createElement(id)
@@ -47,7 +47,7 @@ export const findElement = (parent, id) => {
  * @param {string} id 
  * @returns {Element}
  */
-const createElement = (id) => {
+const createElement = (id): Element => {
     const stage = document.createElement("div")
     stage.id = id
     return stage
